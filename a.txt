@@ -1,0 +1,171 @@
+so the following is the structure of my parking space app in python:
+my base workspace folder is app_structure_parking_sys open in vs code:
+
+app_structure_parking_sys/
+|-- __main__.py
+|-- controller.py
+|-- pages/
+|   |-- __init__.py
+|   |-- base_page.py
+|   |-- login_page.py
+|   |-- register_page.py
+|   |-- home_page.py
+|   |-- user_profile_page.py
+|   |-- booking_page.py
+|   |-- pg_a.py
+|   |-- pg_b.py
+|-- user_data/
+|   |-- __init__.py
+|   |-- userdata_manager.py
+|   |-- global_users_data.py
+|   |-- local_users_data.py
+|   |-- global_users_data/
+|   |   |-- customers_db.json
+|   |-- local_user_data/
+|       |-- Sharon_userdata.json
+|       |-- Paul_userdata.json
+
+
+I have files:
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\__main__.py
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\pages\login_page.py
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\pages\register_page.py
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\pages\home_page.py
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\pages\user_profile_page.py
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\pages\booking_page.py
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\pages\pg_a.py
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\pages\pg_b.py
+
+i also have a folder:
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\user_data
+and folers in that path are:
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\user_data\global_users_data
+C:\Users\Lauren Waw\Desktop\Katchiets\python_codes\app_structure_parking_sys\user_data\local_user_data
+
+
+you'll realise am trying to make my layout professionally and modular.
+
+
+but lets base it that i opened the folderapp_structure_parking_sys in vscode so tha is our base workspace.
+we should perform null checks incase what we are searching dont exist, and debug the logs
+
+try to figure out my plan and as I give you directions also come up with a better industrial scale code and structure for my UI/UX to be more appealing
+
+so initially, it i think(am not sure if its professionall) the main.py might create a tkintre frame so that the page modules can render on it. 
+
+it user_data path contains data that should determine how the home page grets the user ond mention the name. it saves data into 2 folder,  global_users_data folder (name format will be customers_db.json)that will contain name and passwords details of all users who register, and a local_user_data folder that will creat a file(name format will be the {Name}_userdata.json) that stores current user login details ie name and password.
+
+when the system finds no user in local_user_data file in a user file, it divertes to  a register_page . 
+which contains user entry field and an 2 passwords entries (2nd for confirmation). the name and password will be stored in both global and local user folder as i had mention above about these folders.
+afterwards, it will call the login_page and populate the entry fileds of name and password withe the most recent modified data file in local user path. 
+the log in page might contain a label saying (dont have an account?) and a button that brings up the register page. also the login should have a name and password label and entry field. iff user not in all_users.json, it will prompt user not registered and automatically take user to register_page,  the login also contains another btn, register new user, that will prompt the register page .
+the login also caontainns a btn, login, that will now prompt the home_page. 
+
+inthe thr home_page be creative and use UI/UX knowledge form ur school of thought. the homepage also displays currnt user name in greet format. 
+also contains btns for switching to various pages :user_profile_page,booking_page,pg_a, pg_b.
+
+these pgs also contain btn for returning to home_page.
+
+
+lets talk about the structure of the 2 user files cooz i know you will be erraneous.
+eg a file name in global_users_data: customers_db.json
+
+contains:
+[
+ {
+    "Customer Number": 33,
+    "Name": "Paul",
+    "Password": "1234"
+  },
+  {
+    "Customer Number": 34,
+    "Name": "Sharon",
+    "Password": "123"
+  }
+]
+
+
+lets say  files names in local_user_data :Sharon_userdata.json, Paul_userdata.json.
+the login page should populate the entry fields with most recently modified user file.
+
+eg a file name in local_user_data :Sharon_userdata.json
+contains :
+
+{
+  "Name": "Sharon",
+  "Password": "123"
+}
+
+
+if user Sharon had current session.
+
+
+
+
+
+
+
+
+
+app_structure_parking_sys/
+|-- controllers/
+|   |-- __init__.py
+|   |-- page_controller.py
+|   |-- user_controller.py
+|-- models/
+|   |-- __init__.py
+|   |-- user_model.py
+|-- pages/
+|   |-- __init__.py
+|   |-- base_page.py
+|   |-- login_page.py
+|   |-- register_page.py
+|   |-- home_page.py
+|-- user_data/
+|   |-- __init__.py
+|   |-- global_users_data/
+|   |   |-- customers_db.json
+|   |-- local_user_data/
+|       |-- Sharon_userdata.json
+|       |-- Paul_userdata.json
+|-- __main__.py
+
+
+controllers/: Contains the controllers responsible for managing user input and application flow.
+models/: Contains the models handling data-related operations.
+pages/: Contains the views representing different pages of your application.
+user_data/: Contains user-related data, adhering to the model.
+
+
+This structure helps keep the responsibilities of each component clear, making your codebase more maintainable and scalable. You can further modularize and improve based on the specific requirements of your application.
+
+
+MVC (Model-View-Controller) is a design pattern commonly used in software development to separate concerns within an application. It divides the application into three interconnected components: Model, View, and Controller.
+
+Model:
+
+Represents the data and business logic of the application.
+Manages the application state and responds to requests for information from the View.
+Independent of the user interface.
+View:
+
+Presents the data to the user and manages the user interface.
+Receives user input and forwards it to the Controller.
+Typically, a passive component, meaning it doesn't contain the application's logic but displays the data provided by the Model.
+Controller:
+
+Handles user input and updates the Model and View accordingly.
+Acts as an intermediary between the Model and the View, ensuring that changes in one are reflected in the other.
+Contains the application's logic, responding to user actions and manipulating the Model and View.
+In the context of your parking space app, you can apply MVC as follows:
+
+Model:
+
+In your case, the model could handle user data operations, such as reading and writing user data from and to files, managing the global users' data, and handling any business logic related to users.
+View:
+
+The view represents your GUI components, including pages like login, register, home, etc. Each page should be responsible for displaying information and capturing user input.
+Controller:
+
+The controller manages the flow of the application. It handles user input, triggers actions in the Model, and updates the View accordingly. For example, when a user clicks the login button, the controller should validate the input, check with the Model for authentication, and then update the View accordingly.
+Here's a simplified example of how you might structure your code to adhere to the MVC pattern:

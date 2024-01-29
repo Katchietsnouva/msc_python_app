@@ -1,0 +1,26 @@
+[
+    {
+        "username": "a",
+        "password": "a",
+        "name": "a",
+        "phone": "a",
+        "car_plate": "a",
+        "email": "a"
+    },
+    {
+        "username": "b",
+        "password": "b",
+        "name": "b",
+        "phone": "b",
+        "car_plate": "b",
+        "email": "b"
+    },
+    {
+        "username": "aaaa",
+        "password": "a",
+        "name": "a",
+        "phone": "a",
+        "car_plate": "a",
+        "email": "a"
+    }
+]
